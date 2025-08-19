@@ -34,7 +34,6 @@ https://github.com/user-attachments/assets/81c9c0a6-cfb9-4cd2-a487-e2f6967ba982
 
    ```bash
    git clone https://github.com/renuthomas/qr-code-snipper.git
-
    ```
 
 2. Open Chrome and go to chrome://extensions/.

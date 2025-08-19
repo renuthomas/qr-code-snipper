@@ -27,11 +27,7 @@ chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
 
         const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
         console.log("ImageData OK:", imageData.width, imageData.height);
-        console.log("jsQR available?", typeof jsQR); // should be 'function'
-        /*canvas.convertToBlob().then((blob) => {
-          const url = URL.createObjectURL(blob);
-          chrome.tabs.create({ url });
-        });*/
+        console.log("jsQR available?", typeof jsQR);
 
         const code = jsQR(imageData.data, imageData.width, imageData.height);
         console.log("jsQR executed");
@@ -40,32 +36,11 @@ chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
           console.log("QR Code data:", code.data);
           chrome.storage.local.get("snippedQR", (result) => {
             let qrdata = result.snippedQR || [];
-
-            if (!Array.isArray(qrdata)) {
-              console.warn(
-                `Data for key '${qrdata}' is not an array. Overwriting with new array.`
-              );
-              qrdata = [];
-            }
-
             qrdata.push(code.data);
             chrome.storage.local.set({ snippedQR: qrdata });
           });
-
-          /*chrome.notifications.create({
-            type: "basic",
-            iconUrl: "icon.png",
-            title: "QR Code Decoded",
-            message: code.data,
-          });*/
         } else {
           console.log("No QR code found.");
-          /*chrome.notifications.create({
-            type: "basic",
-            iconUrl: "icon.png",
-            title: "QR Code",
-            message: "No QR code found in the selected region.",
-          });*/
         }
       } catch (err) {
         console.error("Error decoding QR:", err);
