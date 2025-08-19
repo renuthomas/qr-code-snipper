@@ -72,7 +72,7 @@ This extension uses the following Chrome permissions:
 
 - `activeTab` – to temporarily access the current tab when the user clicks the extension.
 - `tabs` – to capture the screen of the current tab and retrieve metadata like title/URL.
-- `storage` – to save extension preferences or history of scanned QR codes.
+- `storage` – to store the history of scanned QR codes.
 - `scripting` – for injecting scripts if QR detection needs to run inside the page.
 
 ## 🛠 Development Notes
