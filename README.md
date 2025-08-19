@@ -16,7 +16,7 @@ A lightweight Chrome extension to **scan and read QR codes** directly in your br
 
 ## 🎥 Demo
 
-📌 _(Add screenshots or a demo GIF/video here)_
+https://github.com/user-attachments/assets/81c9c0a6-cfb9-4cd2-a487-e2f6967ba982
 
 ---
 
