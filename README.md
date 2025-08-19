@@ -7,7 +7,7 @@ A lightweight Chrome extension to **scan and read QR codes** directly in your br
 ## ✨ Features
 
 🔍 Scan and decode QR codes instantly from images.  
-🖼️ Upload images or capture QR codes directly from a webpage.  
+🖼️ Snip QR codes directly from a webpage or documents.  
 📋 Copy decoded text, links, or data with one click.  
 🌐 Works offline — no server-side processing required.  
 🧩 Clean and minimal popup UI for quick access.
