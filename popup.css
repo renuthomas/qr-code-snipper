@@ -1,0 +1,90 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  width: 250px;
+  padding: 20px;
+  margin: 0;
+}
+
+h1 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+#snip-btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#snip-btn:hover {
+  background-color: #45a049;
+}
+
+#result {
+  margin-top: 15px;
+  background-color: #fff;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 13px;
+  word-wrap: break-word;
+}
+
+/* Each item block */
+#result .item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 8px;
+  margin-bottom: 8px;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+  border-bottom: 1px solid #eee;
+  transition: background-color 0.2s ease;
+}
+
+#result .item:last-child {
+  margin-bottom: 0;
+  border-bottom: none;
+}
+
+#result .item:hover {
+  background-color: #e9f5e9;
+}
+
+.item .text {
+  flex: 1;
+  margin-right: 10px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+
+.item .text:hover {
+  text-decoration: underline dotted;
+}
+
+.item .icon {
+  font-size: 16px;
+  color: #666;
+  cursor: pointer;
+  margin-left: 8px;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.item .icon:hover {
+  color: #222;
+  transform: scale(1.15);
+}
+

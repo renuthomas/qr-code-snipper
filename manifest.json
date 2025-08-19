@@ -1,0 +1,39 @@
+{
+  "manifest_version": 3,
+  "name": "QR Code Snipper",
+  "version": "1.0",
+  "description": "Snip and decode QR codes from any page.",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "tabs",
+    "storage"
+
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "./assets/qr_icon_16x16.png",
+      "32": "./assets/qr_icon_32x32.png",
+      "48": "./assets/qr_icon_48x48.png",
+      "128":"./assets/qr_icon_128x128.png"
+    }
+  },
+  "icons": {
+        "16": "./assets/qr_icon_16x16.png",
+        "32": "./assets/qr_icon_32x32.png",
+        "48": "./assets/qr_icon_48x48.png",
+        "64": "./assets/qr_icon_64x64.png",
+        "128": "./assets/qr_icon_128x128.png"
+    },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["jsQR.js"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "host_permissions": ["<all_urls>"]
+}
