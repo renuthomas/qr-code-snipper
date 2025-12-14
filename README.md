@@ -22,13 +22,13 @@ https://github.com/user-attachments/assets/81c9c0a6-cfb9-4cd2-a487-e2f6967ba982
 
 ## 🧩 Installation
 
-### 👉 From Chrome Web Store
+<!--### 👉 From Chrome Web Store
 
-> 📥 **Recommended**: Install directly from the Chrome Web Store.
+> 📥 **Recommended**: Install directly from the Chrome Web Store.-->
 
-[**➤ Install from Chrome Web Store**](https://chrome.google.com/webstore/detail/YOUR-EXTENSION-ID)
+<!--[**➤ Install from Chrome Web Store**](https://chrome.google.com/webstore/detail/YOUR-EXTENSION-ID)-->
 
-### 💻 Manual Installation (for developers)
+### 💻 Manual Installation
 
 1. Clone or download the repository:
 
