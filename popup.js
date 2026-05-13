@@ -43,6 +43,12 @@ function addResultItem(text) {
   resultDiv.appendChild(item);
 }
 
+chrome.runtime.onMessage.addListener((message) => {
+  if (message.type === 'SNIP_CANCELLED') {
+    snipBtn.disabled = false;
+  }
+});
+
 chrome.storage.local.get("snippedQR", (result) => {
   console.log("QR from storage:", result.snippedQR);
   const resultelement = document.getElementById("result");

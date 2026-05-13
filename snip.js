@@ -76,5 +76,18 @@
     });
   };
 
+  const onKeyDown = (e) => {
+    if (e.key !== 'Escape') return;
+    document.removeEventListener('keydown', onKeyDown);
+    overlay.removeEventListener('mousedown', onMouseDown);
+    overlay.removeEventListener('mousemove', onMouseMove);
+    overlay.removeEventListener('mouseup', onMouseUp);
+    if (selectionBox) selectionBox.remove();
+    overlay.removeAttribute('id');
+    overlay.remove();
+    chrome.runtime.sendMessage({ type: 'SNIP_CANCELLED' });
+  };
+
+  document.addEventListener('keydown', onKeyDown);
   overlay.addEventListener("mousedown", onMouseDown);
 })();
