@@ -1,6 +1,8 @@
 const snipBtn = document.getElementById("snip-btn");
 snipBtn.addEventListener("click", async () => {
   snipBtn.disabled = true;
+  snipBtn.textContent = "Snipping...";
+  snipBtn.classList.add("snipping");
   const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
   console.log(tab);
   chrome.scripting
@@ -46,6 +48,8 @@ function addResultItem(text) {
 chrome.runtime.onMessage.addListener((message) => {
   if (message.type === 'SNIP_DONE' || message.type === 'SNIP_CANCELLED') {
     snipBtn.disabled = false;
+    snipBtn.textContent = "Snip QR Code";
+    snipBtn.classList.remove("snipping");
   }
 });
 
