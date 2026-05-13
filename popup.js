@@ -44,7 +44,7 @@ function addResultItem(text) {
 }
 
 chrome.runtime.onMessage.addListener((message) => {
-  if (message.type === 'SNIP_CANCELLED') {
+  if (message.type === 'SNIP_DONE' || message.type === 'SNIP_CANCELLED') {
     snipBtn.disabled = false;
   }
 });

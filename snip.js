@@ -74,6 +74,7 @@
       type: "CAPTURE",
       rect: safeRect,
     });
+    chrome.runtime.sendMessage({ type: 'SNIP_DONE' });
   };
 
   const onKeyDown = (e) => {
