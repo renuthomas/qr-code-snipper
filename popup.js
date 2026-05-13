@@ -1,4 +1,6 @@
-document.getElementById("snip-btn").addEventListener("click", async () => {
+const snipBtn = document.getElementById("snip-btn");
+snipBtn.addEventListener("click", async () => {
+  snipBtn.disabled = true;
   const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
   console.log(tab);
   chrome.scripting
@@ -8,6 +10,7 @@ document.getElementById("snip-btn").addEventListener("click", async () => {
     })
     .then(() => {
       console.log("script inserted successfully");
+      window.close();
     });
 });
 

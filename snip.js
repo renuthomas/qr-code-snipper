@@ -1,5 +1,9 @@
 (async () => {
+  // Guard: bail out if a snip overlay is already active on this page
+  if (document.getElementById("__qr-snipper-overlay")) return;
+
   const overlay = document.createElement("div");
+  overlay.id = "__qr-snipper-overlay";
   Object.assign(overlay.style, {
     position: "fixed",
     top: 0,
