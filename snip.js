@@ -1,9 +1,8 @@
 (async () => {
-  // Guard: bail out if a snip overlay is already active on this page
-  if (document.getElementById("__qr-snipper-overlay")) return;
+  if (document.getElementById('qr-snip-overlay')) return;
 
   const overlay = document.createElement("div");
-  overlay.id = "__qr-snipper-overlay";
+  overlay.id = 'qr-snip-overlay';
   Object.assign(overlay.style, {
     position: "fixed",
     top: 0,
@@ -56,6 +55,7 @@
   const onMouseUp = () => {
     overlay.removeEventListener("mousemove", onMouseMove);
     overlay.removeEventListener("mouseup", onMouseUp);
+    overlay.removeAttribute('id');
     overlay.remove();
     const rect = selectionBox.getBoundingClientRect();
     selectionBox.remove();
