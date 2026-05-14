@@ -74,6 +74,7 @@
       type: "CAPTURE",
       rect: safeRect,
     });
+    chrome.storage.local.set({ isSnipping: false });
     chrome.runtime.sendMessage({ type: 'SNIP_DONE' });
   };
 
