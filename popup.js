@@ -1,4 +1,18 @@
-document.getElementById("snip-btn").addEventListener("click", async () => {
+const snipBtn = document.getElementById("snip-btn");
+
+chrome.storage.local.get("isSnipping", (result) => {
+  if (result.isSnipping) {
+    snipBtn.disabled = true;
+    snipBtn.textContent = "Snipping...";
+    snipBtn.classList.add("snipping");
+  }
+});
+
+snipBtn.addEventListener("click", async () => {
+  snipBtn.disabled = true;
+  snipBtn.textContent = "Snipping...";
+  snipBtn.classList.add("snipping");
+  chrome.storage.local.set({ isSnipping: true });
   const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
   console.log(tab);
   chrome.scripting
@@ -8,6 +22,7 @@ document.getElementById("snip-btn").addEventListener("click", async () => {
     })
     .then(() => {
       console.log("script inserted successfully");
+      window.close();
     });
 });
 
@@ -39,6 +54,15 @@ function addResultItem(text) {
   item.appendChild(copyIcon);
   resultDiv.appendChild(item);
 }
+
+chrome.runtime.onMessage.addListener((message) => {
+  if (message.type === 'SNIP_DONE' || message.type === 'SNIP_CANCELLED') {
+    chrome.storage.local.set({ isSnipping: false });
+    snipBtn.disabled = false;
+    snipBtn.textContent = "Snip QR Code";
+    snipBtn.classList.remove("snipping");
+  }
+});
 
 chrome.storage.local.get("snippedQR", (result) => {
   console.log("QR from storage:", result.snippedQR);

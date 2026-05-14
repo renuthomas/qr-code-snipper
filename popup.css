@@ -30,6 +30,11 @@ h1 {
   background-color: #45a049;
 }
 
+#snip-btn.snipping {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+
 #result {
   margin-top: 15px;
   background-color: #fff;
