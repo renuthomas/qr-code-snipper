@@ -1,8 +1,18 @@
 const snipBtn = document.getElementById("snip-btn");
+
+chrome.storage.local.get("isSnipping", (result) => {
+  if (result.isSnipping) {
+    snipBtn.disabled = true;
+    snipBtn.textContent = "Snipping...";
+    snipBtn.classList.add("snipping");
+  }
+});
+
 snipBtn.addEventListener("click", async () => {
   snipBtn.disabled = true;
   snipBtn.textContent = "Snipping...";
   snipBtn.classList.add("snipping");
+  chrome.storage.local.set({ isSnipping: true });
   const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
   console.log(tab);
   chrome.scripting
@@ -47,6 +57,7 @@ function addResultItem(text) {
 
 chrome.runtime.onMessage.addListener((message) => {
   if (message.type === 'SNIP_DONE' || message.type === 'SNIP_CANCELLED') {
+    chrome.storage.local.set({ isSnipping: false });
     snipBtn.disabled = false;
     snipBtn.textContent = "Snip QR Code";
     snipBtn.classList.remove("snipping");
