@@ -86,6 +86,7 @@
     if (selectionBox) selectionBox.remove();
     overlay.removeAttribute('id');
     overlay.remove();
+    chrome.storage.local.set({ isSnipping: false });
     chrome.runtime.sendMessage({ type: 'SNIP_CANCELLED' });
   };
 
