@@ -1,5 +1,8 @@
 (async () => {
+  if (document.getElementById('qr-snip-overlay')) return;
+
   const overlay = document.createElement("div");
+  overlay.id = 'qr-snip-overlay';
   Object.assign(overlay.style, {
     position: "fixed",
     top: 0,
@@ -52,6 +55,7 @@
   const onMouseUp = () => {
     overlay.removeEventListener("mousemove", onMouseMove);
     overlay.removeEventListener("mouseup", onMouseUp);
+    overlay.removeAttribute('id');
     overlay.remove();
     const rect = selectionBox.getBoundingClientRect();
     selectionBox.remove();
@@ -70,7 +74,21 @@
       type: "CAPTURE",
       rect: safeRect,
     });
+    chrome.runtime.sendMessage({ type: 'SNIP_DONE' });
   };
 
+  const onKeyDown = (e) => {
+    if (e.key !== 'Escape') return;
+    document.removeEventListener('keydown', onKeyDown);
+    overlay.removeEventListener('mousedown', onMouseDown);
+    overlay.removeEventListener('mousemove', onMouseMove);
+    overlay.removeEventListener('mouseup', onMouseUp);
+    if (selectionBox) selectionBox.remove();
+    overlay.removeAttribute('id');
+    overlay.remove();
+    chrome.runtime.sendMessage({ type: 'SNIP_CANCELLED' });
+  };
+
+  document.addEventListener('keydown', onKeyDown);
   overlay.addEventListener("mousedown", onMouseDown);
 })();
